@@ -2,8 +2,21 @@
   "name": "ebics-to-ynab",
   "version": "1.0.0",
   "description": "Connect a bank account to YNAB (You need a budget) via EBICS.",
-  "main": "index.js",
-  "scripts": {},
+  "main": "build/index.js",
+  "scripts": {
+    "build": "rm -rf build && tsc && zip -r build/lambda.zip build",
+    "ts:check": "tsc --noEmit",
+    "eslint:check": "eslint --max-warnings=0 src",
+    "prettier:check": "prettier -c ."
+  },
   "author": "david-aurel",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.1.6",
+    "@types/node": "^20.3.3",
+    "@typescript-eslint/parser": "^5.60.01",
+    "@typescript-eslint/eslint-plugin": "^5.60.01",
+    "eslint": "^8.44.0",
+    "prettier": "^2.8.8"
+  }
 }

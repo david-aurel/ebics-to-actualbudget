@@ -1,0 +1,92 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  dependencies:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-node18-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Create node_modules
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+  lint:
+    name: Lint
+    needs: ['dependencies']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Restore node_modules
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-node18-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Lint
+        run: npm run prettier:check && npm run eslint:check && npm run ts:check
+
+  terraform:
+    name: Terraform Apply
+    needs: ['dependencies', 'lint']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Restore node_modules
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-node18-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Build
+        run: npm run build
+
+      - name: Terraform Setup
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        run: terraform init
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_ACTION_WORKING_DIR: '.'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+
+      - name: Terraform validate
+        run: terraform validate
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TF_ACTION_WORKING_DIR: '.'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
