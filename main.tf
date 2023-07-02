@@ -1,12 +1,12 @@
+provider "aws" {
+  region = "eu-central-1"
+}
+
 terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 4.16"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.1.0"
     }
     archive = {
       source  = "hashicorp/archive"
@@ -14,9 +14,17 @@ terraform {
     }
   }
 
+  backend "s3" {
+    bucket = "ebics-to-ynab-terraform-state"
+    key    = "default-infrastructure"
+    region = "eu-central-1"
+  }
+
   required_version = ">= 1.2.0"
 }
 
-provider "aws" {
-  region = "eu-central-1"
+
+resource "aws_s3_bucket" "terraform_state" {
+  # This bucket stores the terraform state so that local dev machines and the CI stay in sync
+  bucket = "ebics-to-ynab-terraform-state"
 }

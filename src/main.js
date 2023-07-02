@@ -7,7 +7,7 @@ module.exports.handler = async (event) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            message: "Lambda ran",
+            message: "Lambda ran after update",
         }),
     }
 }
