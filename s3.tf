@@ -1,5 +1,11 @@
+
+resource "random_pet" "lambda_bucket_name" {
+  prefix = "ebics-to-ynab"
+  length = 4
+}
+
 resource "aws_s3_bucket" "lambda_bucket" {
-  bucket        = "ebics-to-ynab"
+  bucket        = random_pet.lambda_bucket_name.id
   force_destroy = true
 }
 
