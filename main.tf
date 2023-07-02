@@ -28,3 +28,14 @@ resource "aws_s3_bucket" "terraform_state" {
   # This bucket stores the terraform state so that local dev machines and the CI stay in sync
   bucket = "ebics-to-ynab-terraform-state"
 }
+
+
+output "lambda_bucket_name" {
+  description = "Name of the S3 bucket used to store function code."
+  value       = aws_s3_bucket.lambda_bucket.id
+}
+
+output "function_name" {
+  description = "Name of the Lambda function."
+  value       = aws_lambda_function.ebics-to-ynab.function_name
+}

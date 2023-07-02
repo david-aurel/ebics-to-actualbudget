@@ -14,4 +14,10 @@ override.tf.json
 terraform.rc
 
 # build
-output
+build
+
+# npm
+node_modules
+
+# Mac OS
+.DS_Store

@@ -1,3 +1,17 @@
+# S3 to store the Javascript code for the lambda
+resource "aws_s3_bucket" "lambda_bucket" {
+  bucket        = "ebics-to-ynab-lambda"
+  force_destroy = true
+}
+resource "aws_s3_object" "ebics-to-ynab" {
+  bucket = aws_s3_bucket.lambda_bucket.id
+  key    = "lambda.zip"
+  source = "${path.module}/build/lambda.zip"
+  etag   = filemd5("${path.module}/build/lambda.zip")
+}
+
+
+# Lambda that will run the Javascript code
 resource "aws_lambda_function" "ebics-to-ynab" {
   function_name = "ebics-to-ynab"
 
@@ -7,7 +21,7 @@ resource "aws_lambda_function" "ebics-to-ynab" {
   runtime = "nodejs18.x"
   handler = "main.handler"
 
-  source_code_hash = data.archive_file.ebics-to-ynab.output_base64sha256
+  source_code_hash = filemd5("${path.module}/build/lambda.zip")
 
   role = aws_iam_role.lambda_exec.arn
 }
