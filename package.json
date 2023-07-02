@@ -1,0 +1,9 @@
+{
+  "name": "ebics-to-ynab",
+  "version": "1.0.0",
+  "description": "Connect a bank account to YNAB (You need a budget) via EBICS.",
+  "main": "index.js",
+  "scripts": {},
+  "author": "david-aurel",
+  "license": "ISC"
+}
