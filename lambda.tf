@@ -19,7 +19,7 @@ resource "aws_lambda_function" "ebics-to-ynab" {
   s3_key    = aws_s3_object.ebics-to-ynab.key
 
   runtime = "nodejs18.x"
-  handler = "main.handler"
+  handler = "build/index.handler"
 
   source_code_hash = filemd5("${path.module}/build/lambda.zip")
 
