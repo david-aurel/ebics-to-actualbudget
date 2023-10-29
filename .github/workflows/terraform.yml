@@ -1,9 +1,13 @@
-name: Deploy
+name: Terraform
 
 on:
   push:
-    branches:
-      - main
+    branches: ['main']
+  pull_request:
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
 
 jobs:
   dependencies:
@@ -47,12 +51,17 @@ jobs:
         run: npm run prettier:check && npm run eslint:check && npm run ts:check
 
   terraform:
-    name: Terraform Apply
-    needs: ['dependencies', 'lint']
+    name: Terraform
     runs-on: ubuntu-latest
+    needs: ['dependencies', 'lint']
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::238520927957:role/github_action
+          aws-region: eu-central-1
+      - name: Checkout
+        uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -72,21 +81,17 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TF_ACTION_WORKING_DIR: '.'
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
 
-      - name: Terraform validate
+      - name: Terraform Format
+        run: terraform fmt -check
+
+      - name: Terraform Validate
         run: terraform validate
 
+      - name: Terraform Plan
+        run: terraform plan
+
+      # On push to "main", deploy the Terraform infrastructure
       - name: Terraform Apply
-        run: terraform apply -auto-approve
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TF_ACTION_WORKING_DIR: '.'
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -auto-approve -input=false
