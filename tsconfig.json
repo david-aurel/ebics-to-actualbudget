@@ -7,7 +7,7 @@
     "module": "commonjs",                         /* Specify what module code is generated. */
 
     /* Emit */
-    "outDir": "build",                      /* Specify an output folder for all emitted files. */
+    "outDir": "build",                            /* Specify an output folder for all emitted files. */
     
     /* Interop Constraints */    
     "esModuleInterop": true,                      /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
@@ -29,10 +29,11 @@
     "noUncheckedIndexedAccess": true,             /* Add 'undefined' to a type when accessed using an index. */
     "noImplicitOverride": true,                   /* Ensure overriding members in derived classes are marked with an override modifier. */
     "noPropertyAccessFromIndexSignature": true,   /* Enforces using indexed accessors for keys declared using an indexed type. */
+    "checkJs": true,                              /* Enable error reporting in type-checked JavaScript files. */
 
     /* Completeness */
-    "skipLibCheck": true                          /* Skip type checking all .d.ts files. */
+    "skipLibCheck": false,                          /* Skip type checking all .d.ts files. */
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "types/index.d.ts"],
   "exclude": [],  
 }
