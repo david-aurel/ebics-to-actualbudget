@@ -1,9 +1,9 @@
 # S3 to store the Javascript code for the lambda
 resource "aws_s3_bucket" "lambda_bucket" {
-  bucket        = "ebics-to-ynab-lambda"
+  bucket        = "ebics-to-actualbudget-lambda"
   force_destroy = true
 }
-resource "aws_s3_object" "ebics-to-ynab" {
+resource "aws_s3_object" "ebics-to-actualbudget" {
   bucket = aws_s3_bucket.lambda_bucket.id
   key    = "lambda.zip"
   source = "${path.module}/build/lambda.zip"
@@ -12,11 +12,11 @@ resource "aws_s3_object" "ebics-to-ynab" {
 
 
 # Lambda that will run the Javascript code
-resource "aws_lambda_function" "ebics-to-ynab" {
-  function_name = "ebics-to-ynab"
+resource "aws_lambda_function" "ebics-to-actualbudget" {
+  function_name = "ebics-to-actualbudget"
 
   s3_bucket = aws_s3_bucket.lambda_bucket.id
-  s3_key    = aws_s3_object.ebics-to-ynab.key
+  s3_key    = aws_s3_object.ebics-to-actualbudget.key
 
   runtime = "nodejs18.x"
   handler = "build/index.handler"
@@ -26,8 +26,8 @@ resource "aws_lambda_function" "ebics-to-ynab" {
   role = aws_iam_role.lambda_exec.arn
 }
 
-resource "aws_cloudwatch_log_group" "ebics-to-ynab" {
-  name = "/aws/lambda/${aws_lambda_function.ebics-to-ynab.function_name}"
+resource "aws_cloudwatch_log_group" "ebics-to-actualbudget" {
+  name = "/aws/lambda/${aws_lambda_function.ebics-to-actualbudget.function_name}"
 
   retention_in_days = 30
 }

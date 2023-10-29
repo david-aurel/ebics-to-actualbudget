@@ -1,7 +1,7 @@
 {
-  "name": "ebics-to-ynab",
+  "name": "ebics-to-actualbudget",
   "version": "1.0.0",
-  "description": "Connect a bank account to YNAB (You need a budget) via EBICS.",
+  "description": "Connect a bank account to Actual Budget (https://actualbudget.com/) via EBICS.",
   "main": "src/index.ts",
   "scripts": {
     "build": "rm -rf build && tsc && zip -r build/lambda.zip build",
