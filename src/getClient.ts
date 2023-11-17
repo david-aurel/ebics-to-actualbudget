@@ -3,13 +3,13 @@ import { env } from './env'
 
 export const getClient = () =>
   new Client({
-    url: env.ebicsClient.url,
-    partnerId: env.ebicsClient.partnerId,
-    userId: env.ebicsClient.userId,
-    hostId: env.ebicsClient.hostId,
-    passphrase: env.ebicsClient.passphrase,
-    keyStorage: fsKeysStorage(env.ebicsClient.keyStorage),
-    bankName: env.ebicsClient.bankName,
-    bankShortName: env.ebicsClient.bankShortName,
-    languageCode: env.ebicsClient.languageCode,
+    url: env.EBICS_CLIENT_URL,
+    partnerId: env.EBICS_CLIENT_PARTNER_ID,
+    userId: env.EBICS_CLIENT_USER_ID,
+    hostId: env.EBICS_CLIENT_HOST_ID,
+    passphrase: env.EBICS_CLIENT_PASSPHRASE,
+    keyStorage: fsKeysStorage(env.EBICS_CLIENT_KEY_STORAGE),
+    bankName: env.EBICS_CLIENT_BANK_NAME,
+    bankShortName: env.EBICS_CLIENT_BANK_SHORT_NAME,
+    languageCode: env.EBICS_CLIENT_LANGUAGE_CODE,
   })
