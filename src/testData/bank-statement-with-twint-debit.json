@@ -1,0 +1,133 @@
+{
+  "Document": {
+    "$": { "xmlns": "urn:iso:std:iso:20022:tech:xsd:camt.053.001.04" },
+    "BkToCstmrStmt": [
+      {
+        "GrpHdr": [
+          {
+            "MsgId": ["xxx"],
+            "CreDtTm": ["2001-02-01T12:30:00.000+02:00"],
+            "MsgPgntn": [{ "PgNb": ["1"], "LastPgInd": ["true"] }],
+            "AddtlInf": ["SPS/1.7/PROD"]
+          }
+        ],
+        "Stmt": [
+          {
+            "Id": ["xxx"],
+            "ElctrncSeqNb": ["2"],
+            "CreDtTm": ["2001-02-01T12:30:00.000+02:00"],
+            "FrToDt": [
+              {
+                "FrDtTm": ["2023-02-01T00:00:00.000000000+02:00"],
+                "ToDtTm": ["2023-02-01T23:59:59.999999999+02:00"]
+              }
+            ],
+            "Acct": [
+              {
+                "Id": [{ "IBAN": ["xxx"] }],
+                "Ownr": [
+                  {
+                    "Nm": ["Spongebob Squarepants"],
+                    "PstlAdr": [
+                      {
+                        "StrtNm": ["Conch St."],
+                        "BldgNb": ["124"],
+                        "PstCd": [""],
+                        "TwnNm": ["Bikini Bottom"],
+                        "Ctry": ["CH"]
+                      }
+                    ]
+                  }
+                ],
+                "Svcr": [
+                  {
+                    "FinInstnId": [
+                      {
+                        "BICFI": ["xxx"],
+                        "Othr": [{ "Id": ["xxx"], "Issr": ["VAT-ID"] }]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "Bal": [
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["OPBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2023-02-01"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2023-02-01"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLAV"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2023-02-01"] }]
+              }
+            ],
+            "TxsSummry": [
+              {
+                "TtlNtries": [
+                  {
+                    "NbOfNtries": ["2"],
+                    "TtlNetNtry": [{ "Amt": ["7.7"], "CdtDbtInd": ["DBIT"] }]
+                  }
+                ],
+                "TtlCdtNtries": [{ "NbOfNtries": ["0"], "Sum": ["xxx"] }],
+                "TtlDbtNtries": [{ "NbOfNtries": ["2"], "Sum": ["xxx"] }]
+              }
+            ],
+            "Ntry": [
+              {
+                "Amt": [{ "_": "3.9", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2023-02-01"] }],
+                "ValDt": [{ "Dt": ["2023-09-21"] }],
+                "AcctSvcrRef": ["TTKH7NNVIFGOEPG3-1"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["ICDT"], "SubFmlyCd": ["AUTT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": ["Belastung TWINT: Automat Mus Aenean Inc."]
+              },
+              {
+                "Amt": [{ "_": "3.8", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2023-02-01"] }],
+                "ValDt": [{ "Dt": ["2023-09-21"] }],
+                "AcctSvcrRef": ["JUGUSXJYLBPD9GT9-1"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["ICDT"], "SubFmlyCd": ["AUTT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": ["Belastung TWINT: Automat Mus Aenean Inc."]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -7,7 +7,8 @@
     "build": "rm -rf build && tsc && zip -r build/lambda.zip build",
     "ts:check": "tsc --noEmit",
     "eslint:check": "eslint --max-warnings=0 src",
-    "prettier:check": "prettier -c ."
+    "prettier:check": "prettier -c .",
+    "test": "jest"
   },
   "author": "david-aurel",
   "license": "ISC",

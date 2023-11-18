@@ -1,0 +1,281 @@
+{
+  "Document": {
+    "$": { "xmlns": "urn:iso:std:iso:20022:tech:xsd:camt.053.001.04" },
+    "BkToCstmrStmt": [
+      {
+        "GrpHdr": [
+          {
+            "MsgId": ["xxx"],
+            "CreDtTm": ["2001-02-03T12:30:00.000+02:00"],
+            "MsgPgntn": [{ "PgNb": ["1"], "LastPgInd": ["true"] }],
+            "AddtlInf": ["SPS/1.7/PROD"]
+          }
+        ],
+        "Stmt": [
+          {
+            "Id": ["xxx"],
+            "ElctrncSeqNb": ["4"],
+            "CreDtTm": ["2001-02-03T12:30:00.000+02:00"],
+            "FrToDt": [
+              {
+                "FrDtTm": ["2001-02-03T00:00:00.000000000+02:00"],
+                "ToDtTm": ["2001-02-03T23:59:59.999999999+02:00"]
+              }
+            ],
+            "Acct": [
+              {
+                "Id": [{ "IBAN": ["xxx"] }],
+                "Ownr": [
+                  {
+                    "Nm": ["Spongebob Squarepants"],
+                    "PstlAdr": [
+                      {
+                        "StrtNm": ["Conch St."],
+                        "BldgNb": ["124"],
+                        "PstCd": [""],
+                        "TwnNm": ["Bikini Bottom"],
+                        "Ctry": ["CH"]
+                      }
+                    ]
+                  }
+                ],
+                "Svcr": [
+                  {
+                    "FinInstnId": [
+                      {
+                        "BICFI": ["xxx"],
+                        "Othr": [{ "Id": ["xxx"], "Issr": ["VAT-ID"] }]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "Bal": [
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["OPBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-02-03"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-02-03"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLAV"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-02-03"] }]
+              }
+            ],
+            "TxsSummry": [
+              {
+                "TtlNtries": [
+                  {
+                    "NbOfNtries": ["3"],
+                    "TtlNetNtry": [{ "Amt": ["xxx"], "CdtDbtInd": ["DBIT"] }]
+                  }
+                ],
+                "TtlCdtNtries": [{ "NbOfNtries": ["0"], "Sum": ["xxx"] }],
+                "TtlDbtNtries": [{ "NbOfNtries": ["3"], "Sum": ["xxx"] }]
+              }
+            ],
+            "Ntry": [
+              {
+                "Amt": [{ "_": "5000", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-03"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["EWAYN6BUVBEPD"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["ICDT"], "SubFmlyCd": ["AUTT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "Chrgs": [""],
+                "NtryDtls": [
+                  {
+                    "TxDtls": [
+                      {
+                        "Refs": [{ "AcctSvcrRef": ["HUBV6IWP9TXALZZY"] }],
+                        "Amt": [{ "_": "5000", "$": { "Ccy": "CHF" } }],
+                        "CdtDbtInd": ["DBIT"],
+                        "BkTxCd": [
+                          {
+                            "Domn": [
+                              {
+                                "Cd": ["PMNT"],
+                                "Fmly": [
+                                  { "Cd": ["ICDT"], "SubFmlyCd": ["DMCT"] }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "RltdPties": [
+                          {
+                            "Dbtr": [
+                              {
+                                "PstlAdr": [
+                                  {
+                                    "AdrLine": [
+                                      "Spongebob Squarepants",
+                                      "Conch St. 124",
+                                      "Bikini Bottom",
+                                      "CH"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "Cdtr": [
+                              {
+                                "Nm": ["Patrick Star"],
+                                "PstlAdr": [
+                                  {
+                                    "StrtNm": ["Conch St."],
+                                    "BldgNb": ["122"],
+                                    "PstCd": [""],
+                                    "TwnNm": ["Bikini Bottom"],
+                                    "Ctry": ["CH"]
+                                  }
+                                ]
+                              }
+                            ],
+                            "CdtrAcct": [{ "Id": [{ "IBAN": ["xxx"] }] }]
+                          }
+                        ],
+                        "RltdAgts": [
+                          {
+                            "DbtrAgt": [
+                              { "FinInstnId": [{ "BICFI": ["xxx"] }] }
+                            ],
+                            "CdtrAgt": [
+                              {
+                                "FinInstnId": [
+                                  {
+                                    "ClrSysMmbId": [{ "MmbId": ["xxx"] }],
+                                    "PstlAdr": [
+                                      {
+                                        "AdrLine": [
+                                          "Bikini Bottom Bank",
+                                          "Postfach",
+                                          "8888 Bikini Bottom 1"
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": ["Belastung eBanking Mobile: Auftrags-Nr. xxx"]
+              },
+              {
+                "Amt": [{ "_": "1.39", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-03"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["NXUGJRVXUW8BE8EM"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["CCRD"], "SubFmlyCd": ["POSD"] }]
+                      }
+                    ]
+                  }
+                ],
+                "CardTx": [
+                  {
+                    "Card": [
+                      {
+                        "PlainCardData": [
+                          {
+                            "PAN": ["xxx"],
+                            "CardSeqNb": ["xxx"],
+                            "XpryDt": ["xxx"]
+                          }
+                        ],
+                        "CardBrnd": [{ "Id": ["xxx"] }]
+                      }
+                    ],
+                    "POI": [
+                      {
+                        "Id": [{ "Id": ["Nunc Mauris Limited"] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Online-Einkauf aus Abonnement ZKB Visa Debit Card Nr. xxxx 0xxx, Nunc Mauris Limited"
+                ]
+              },
+              {
+                "Amt": [{ "_": "21.85", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-03"] }],
+                "ValDt": [{ "Dt": ["2001-02-03"] }],
+                "AcctSvcrRef": ["SSZGZDY2QOMT8UZZ"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["CCRD"], "SubFmlyCd": ["POSD"] }]
+                      }
+                    ]
+                  }
+                ],
+                "CardTx": [
+                  {
+                    "Card": [
+                      {
+                        "PlainCardData": [
+                          {
+                            "PAN": ["xxx"],
+                            "CardSeqNb": ["xxx"],
+                            "XpryDt": ["xxx"]
+                          }
+                        ],
+                        "CardBrnd": [{ "Id": ["xxx"] }]
+                      }
+                    ],
+                    "POI": [
+                      {
+                        "Id": [{ "Id": ["In Faucibus Inc."] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Einkauf ZKB Visa Debit Card Nr. xxxx 0xxx, In Faucibus Inc."
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

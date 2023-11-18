@@ -1,0 +1,359 @@
+{
+  "Document": {
+    "$": { "xmlns": "urn:iso:std:iso:20022:tech:xsd:camt.053.001.04" },
+    "BkToCstmrStmt": [
+      {
+        "GrpHdr": [
+          {
+            "MsgId": ["xxx"],
+            "CreDtTm": ["2001-02-02T12:30:00.000+02:00"],
+            "MsgPgntn": [{ "PgNb": ["1"], "LastPgInd": ["true"] }],
+            "AddtlInf": ["SPS/1.7/PROD"]
+          }
+        ],
+        "Stmt": [
+          {
+            "Id": ["xxx"],
+            "ElctrncSeqNb": ["1"],
+            "CreDtTm": ["2001-02-02T00:29:29.532+02:00"],
+            "FrToDt": [
+              {
+                "FrDtTm": ["2001-02-02T00:00:00.000000000+02:00"],
+                "ToDtTm": ["2001-02-02T23:59:59.999999999+02:00"]
+              }
+            ],
+            "Acct": [
+              {
+                "Id": [{ "IBAN": ["xxx"] }],
+                "Ownr": [
+                  {
+                    "Nm": ["Spongebob Squarepants"],
+                    "PstlAdr": [
+                      {
+                        "StrtNm": ["Conch St."],
+                        "BldgNb": ["124"],
+                        "PstCd": [""],
+                        "TwnNm": ["Bikini Bottom"],
+                        "Ctry": ["CH"]
+                      }
+                    ]
+                  }
+                ],
+                "Svcr": [
+                  {
+                    "FinInstnId": [
+                      {
+                        "BICFI": ["xxx"],
+                        "Othr": [{ "Id": ["xxx"], "Issr": ["VAT-ID"] }]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "Bal": [
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["OPBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-02-02"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-02-02"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLAV"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-02-02"] }]
+              }
+            ],
+            "TxsSummry": [
+              {
+                "TtlNtries": [
+                  {
+                    "NbOfNtries": ["6"],
+                    "TtlNetNtry": [{ "Amt": ["xxxx"], "CdtDbtInd": ["CRDT"] }]
+                  }
+                ],
+                "TtlCdtNtries": [{ "NbOfNtries": ["1"], "Sum": ["xxx"] }],
+                "TtlDbtNtries": [{ "NbOfNtries": ["5"], "Sum": ["xxx"] }]
+              }
+            ],
+            "Ntry": [
+              {
+                "Amt": [{ "_": "50", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["RE22RVOIVYJBCYZK-1"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["ICDT"], "SubFmlyCd": ["AUTT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Belastung TWINT: , Ut Dolor Dapibus Industries"
+                ]
+              },
+              {
+                "Amt": [{ "_": "2.3", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["3UQQCECHVU24Q66L"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["CCRD"], "SubFmlyCd": ["POSD"] }]
+                      }
+                    ]
+                  }
+                ],
+                "CardTx": [
+                  {
+                    "Card": [
+                      {
+                        "PlainCardData": [
+                          {
+                            "PAN": ["xxx"],
+                            "CardSeqNb": ["xxx"],
+                            "XpryDt": ["xxx"]
+                          }
+                        ],
+                        "CardBrnd": [{ "Id": ["xxx"] }]
+                      }
+                    ],
+                    "POI": [{ "Id": [{ "Id": ["Nunc In Consulting"] }] }]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Online-Einkauf ZKB Visa Debit Card Nr. xxxx 0xxx, Nunc In Consulting"
+                ]
+              },
+              {
+                "Amt": [{ "_": "2.3", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["VP7VDRG7LCXUROLX"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["CCRD"], "SubFmlyCd": ["POSD"] }]
+                      }
+                    ]
+                  }
+                ],
+                "CardTx": [
+                  {
+                    "Card": [
+                      {
+                        "PlainCardData": [
+                          {
+                            "PAN": ["xxx"],
+                            "CardSeqNb": ["xxx"],
+                            "XpryDt": ["xxx"]
+                          }
+                        ],
+                        "CardBrnd": [{ "Id": ["xxx"] }]
+                      }
+                    ],
+                    "POI": [{ "Id": [{ "Id": ["Arcu LL"] }] }]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Online-Einkauf ZKB Visa Debit Card Nr. xxxx 0xxx, Arcu LL"
+                ]
+              },
+              {
+                "Amt": [{ "_": "24.8", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-01-30"] }],
+                "AcctSvcrRef": ["YNBA2JZDRTUPHVVY"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["CCRD"], "SubFmlyCd": ["POSD"] }]
+                      }
+                    ]
+                  }
+                ],
+                "CardTx": [
+                  {
+                    "Card": [
+                      {
+                        "PlainCardData": [
+                          {
+                            "PAN": ["xxx"],
+                            "CardSeqNb": ["xxx"],
+                            "XpryDt": ["xxx"]
+                          }
+                        ],
+                        "CardBrnd": [{ "Id": ["xxx"] }]
+                      }
+                    ],
+                    "POI": [
+                      {
+                        "Id": [
+                          { "Id": ["Crusty Crab Restaurant Bikini Bottom"] }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Einkauf ZKB Visa Debit Card Nr. xxxx 0xxx, Crusty Crab Restaurant Bikini Bottom"
+                ]
+              },
+              {
+                "Amt": [{ "_": "1.5", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2023-09-23"] }],
+                "AcctSvcrRef": ["TZCCJDWO7M7WZHDP"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["CCRD"], "SubFmlyCd": ["POSD"] }]
+                      }
+                    ]
+                  }
+                ],
+                "CardTx": [
+                  {
+                    "Card": [
+                      {
+                        "PlainCardData": [
+                          {
+                            "PAN": ["xxx"],
+                            "CardSeqNb": ["xxx"],
+                            "XpryDt": ["xxx"]
+                          }
+                        ],
+                        "CardBrnd": [{ "Id": ["xxx"] }]
+                      }
+                    ],
+                    "POI": [
+                      {
+                        "Id": [
+                          { "Id": ["Crusty Crab Restaurant Bikini Bottom"] }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Einkauf ZKB Visa Debit Card Nr. xxxx 0xxx, Crusty Crab Restaurant Bikini Bottom"
+                ]
+              },
+              {
+                "NtryRef": ["xxx"],
+                "Amt": [{ "_": "9999.25", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-02"] }],
+                "AcctSvcrRef": ["Z7AFWZ4V6XCEZ"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["RCDT"], "SubFmlyCd": ["DMCT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "Chrgs": [""],
+                "NtryDtls": [
+                  {
+                    "TxDtls": [
+                      {
+                        "Refs": [
+                          {
+                            "AcctSvcrRef": ["IBEMWRFIFQK9NC43"],
+                            "PmtInfId": ["xxx"]
+                          }
+                        ],
+                        "Amt": [{ "_": "9999.25", "$": { "Ccy": "CHF" } }],
+                        "CdtDbtInd": ["CRDT"],
+                        "BkTxCd": [
+                          {
+                            "Domn": [
+                              {
+                                "Cd": ["PMNT"],
+                                "Fmly": [
+                                  { "Cd": ["RCDT"], "SubFmlyCd": ["DMCT"] }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "RltdPties": [
+                          {
+                            "Dbtr": [
+                              {
+                                "Nm": ["Crusty Crab AG"],
+                                "PstlAdr": [
+                                  {
+                                    "Ctry": ["LI"],
+                                    "AdrLine": [
+                                      "Crusty Crab AG",
+                                      "Bikini Bottom"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "RltdAgts": [
+                          {
+                            "CdtrAgt": [
+                              { "FinInstnId": [{ "BICFI": ["xxx"] }] }
+                            ]
+                          }
+                        ],
+                        "RmtInf": [{ "Ustrd": ["Salaerzahlung"] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": ["Gutschrift: Auftrags-Nr. xxx"]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

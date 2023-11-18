@@ -1,0 +1,91 @@
+{
+  "Document": {
+    "$": { "xmlns": "urn:iso:std:iso:20022:tech:xsd:camt.053.001.04" },
+    "BkToCstmrStmt": [
+      {
+        "GrpHdr": [
+          {
+            "MsgId": ["xxx"],
+            "CreDtTm": ["2001-01-30T12:30:00.000+02:00"],
+            "MsgPgntn": [{ "PgNb": ["1"], "LastPgInd": ["true"] }],
+            "AddtlInf": ["SPS/1.7/PROD"]
+          }
+        ],
+        "Stmt": [
+          {
+            "Id": ["xxx"],
+            "ElctrncSeqNb": ["1"],
+            "CreDtTm": ["2001-01-30T12:30:00.000+02:00"],
+            "FrToDt": [
+              {
+                "FrDtTm": ["2001-01-30T00:00:00.000000000+02:00"],
+                "ToDtTm": ["2001-09-30T23:59:59.999999999+02:00"]
+              }
+            ],
+            "Acct": [
+              {
+                "Id": [{ "IBAN": ["xxx"] }],
+                "Ownr": [
+                  {
+                    "Nm": ["Spongebob Squarepants"],
+                    "PstlAdr": [
+                      {
+                        "StrtNm": ["Conch St."],
+                        "BldgNb": ["124"],
+                        "PstCd": [""],
+                        "TwnNm": ["Bikini Bottom"],
+                        "Ctry": ["CH"]
+                      }
+                    ]
+                  }
+                ],
+                "Svcr": [
+                  {
+                    "FinInstnId": [
+                      {
+                        "BICFI": ["xxx"],
+                        "Othr": [{ "Id": ["xxx"], "Issr": ["VAT-ID"] }]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "Bal": [
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["OPBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-01-30"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-01-30"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLAV"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-01-30"] }]
+              }
+            ],
+            "TxsSummry": [
+              {
+                "TtlNtries": [
+                  {
+                    "NbOfNtries": ["0"],
+                    "TtlNetNtry": [{ "Amt": ["0"], "CdtDbtInd": ["CRDT"] }]
+                  }
+                ],
+                "TtlCdtNtries": [{ "NbOfNtries": ["0"], "Sum": ["0"] }],
+                "TtlDbtNtries": [{ "NbOfNtries": ["0"], "Sum": ["0"] }]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -35,10 +35,10 @@ const main = async () => {
     zip.getEntries()[0]?.getData().toString('utf-8') ?? ''
   )
 
-  const transactions = Camt053Schema.parse(JSON.parse(data))
+  const transactionsData = Camt053Schema.parse(JSON.parse(data))
 
   // TODO: send transactions to actual-budget
-  return transactions
+  return transactionsData
 }
 
 void main()
