@@ -1,13 +1,14 @@
 import { Camt053SchemaType } from '../zod/camt053'
 
 export const getPayee = ({
-  details,
+  entryDetails,
   cardTransaction,
   additionalEntryInfo,
   creditDebitIndicator,
-}: Camt053SchemaType['entries'][0]) => {
-  const transferCreditor = details.relatedParties.creditor
-  const transferDebtor = details.relatedParties.debtor
+}: Camt053SchemaType['document']['bankToCustomerStatement']['statement']['entries'][0]) => {
+  const transferCreditor =
+    entryDetails.transactionDetails.relatedParties.creditor
+  const transferDebtor = entryDetails.transactionDetails.relatedParties.debtor
   const cardMerchant = cardTransaction.poi
   const creditorFromNote = additionalEntryInfo.startsWith('Belastung TWINT: ')
     ? additionalEntryInfo.replace('Belastung ', '')
