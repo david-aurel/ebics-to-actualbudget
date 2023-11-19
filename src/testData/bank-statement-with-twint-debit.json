@@ -18,8 +18,8 @@
             "CreDtTm": ["2001-02-01T12:30:00.000+02:00"],
             "FrToDt": [
               {
-                "FrDtTm": ["2023-02-01T00:00:00.000000000+02:00"],
-                "ToDtTm": ["2023-02-01T23:59:59.999999999+02:00"]
+                "FrDtTm": ["2001-02-01T00:00:00.000000000+02:00"],
+                "ToDtTm": ["2001-02-01T23:59:59.999999999+02:00"]
               }
             ],
             "Acct": [
@@ -56,19 +56,19 @@
                 "Tp": [{ "CdOrPrtry": [{ "Cd": ["OPBD"] }] }],
                 "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
                 "CdtDbtInd": ["CRDT"],
-                "Dt": [{ "Dt": ["2023-02-01"] }]
+                "Dt": [{ "Dt": ["2001-02-01"] }]
               },
               {
                 "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLBD"] }] }],
                 "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
                 "CdtDbtInd": ["CRDT"],
-                "Dt": [{ "Dt": ["2023-02-01"] }]
+                "Dt": [{ "Dt": ["2001-02-01"] }]
               },
               {
                 "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLAV"] }] }],
                 "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
                 "CdtDbtInd": ["CRDT"],
-                "Dt": [{ "Dt": ["2023-02-01"] }]
+                "Dt": [{ "Dt": ["2001-02-01"] }]
               }
             ],
             "TxsSummry": [
@@ -89,8 +89,8 @@
                 "CdtDbtInd": ["DBIT"],
                 "RvslInd": ["false"],
                 "Sts": ["BOOK"],
-                "BookgDt": [{ "Dt": ["2023-02-01"] }],
-                "ValDt": [{ "Dt": ["2023-09-21"] }],
+                "BookgDt": [{ "Dt": ["2001-02-01"] }],
+                "ValDt": [{ "Dt": ["2001-01-30"] }],
                 "AcctSvcrRef": ["TTKH7NNVIFGOEPG3-1"],
                 "BkTxCd": [
                   {
@@ -109,8 +109,8 @@
                 "CdtDbtInd": ["DBIT"],
                 "RvslInd": ["false"],
                 "Sts": ["BOOK"],
-                "BookgDt": [{ "Dt": ["2023-02-01"] }],
-                "ValDt": [{ "Dt": ["2023-09-21"] }],
+                "BookgDt": [{ "Dt": ["2001-02-01"] }],
+                "ValDt": [{ "Dt": ["2001-01-30"] }],
                 "AcctSvcrRef": ["JUGUSXJYLBPD9GT9-1"],
                 "BkTxCd": [
                   {

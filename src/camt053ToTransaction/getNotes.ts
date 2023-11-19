@@ -9,5 +9,7 @@ export const getNotes = ({
     entryDetails.transactionDetails.remittanceInformation.structured
       .creditorReferenceInformation.ref
 
-  return `${additionalEntryInfo}${customRef ? ` (${customRef})` : ''}`
+  return `${
+    customRef ? `${customRef} (${additionalEntryInfo})` : additionalEntryInfo
+  }`
 }

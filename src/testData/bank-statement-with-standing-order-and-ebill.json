@@ -318,7 +318,7 @@
                 "RvslInd": ["false"],
                 "Sts": ["BOOK"],
                 "BookgDt": [{ "Dt": ["2001-02-05"] }],
-                "ValDt": [{ "Dt": ["2023-09-26"] }],
+                "ValDt": [{ "Dt": ["2001-02-03"] }],
                 "AcctSvcrRef": ["4DPRH8TCGXAYPZWD"],
                 "BkTxCd": [
                   {

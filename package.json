@@ -25,10 +25,12 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@actual-app/api": "^6.2.1",
     "@types/adm-zip": "^0.5.3",
     "@types/xml2js": "^0.4.13",
     "adm-zip": "^0.5.10",
     "big.js": "^6.2.1",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "ebics-client": "^0.3.0",
     "envalid": "^8.0.0",
