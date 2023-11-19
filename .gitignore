@@ -22,6 +22,10 @@ node_modules
 # Mac OS
 .DS_Store
 
-# Sensitive Information
+# temporary actual budget data
+downloads/*
+!downloads/README.md
+
+# sensitive information
 .env
 ebics_private_key.txt

@@ -25,6 +25,7 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "@actual-app/api": "^6.2.1",
     "@types/adm-zip": "^0.5.3",
     "@types/xml2js": "^0.4.13",
     "adm-zip": "^0.5.10",

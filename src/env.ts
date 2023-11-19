@@ -14,4 +14,9 @@ export const env = cleanEnv(process.env, {
     default: 'en',
     choices: ['en', 'de', 'fr'],
   }),
+
+  ACTUAL_BUDGET_SERVER_URL: url(),
+  ACTUAL_BUDGET_SERVER_PASSWORD: str(),
+  ACTUAL_BUDGET_SYNC_ID: str(),
+  ACTUAL_BUDGET_ACCOUNT_ID: str(),
 })

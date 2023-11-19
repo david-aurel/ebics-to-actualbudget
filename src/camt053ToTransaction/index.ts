@@ -1,5 +1,6 @@
-import Big from 'big.js'
-
+// Actual Budget doesn't use EMS yet
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const actualBudget = require('@actual-app/api')
 import { Camt053SchemaType } from '../zod/camt053'
 import { Transaction } from '../zod/Transaction'
 import { getPayee } from './getPayee'
@@ -13,7 +14,7 @@ export const camt053ToTransaction =
   (accountId: string) => (data: Camt053SchemaType) => {
     const transactions: Transaction[] =
       data.document.bankToCustomerStatement.statement.entries.map((entry) => {
-        const amount = new Big(entry.amount.value).times(100).toNumber()
+        const amount = actualBudget.utils.amountToInteger(entry.amount.value)
         const payee = getPayee(entry)
         const notes = getNotes(entry)
         return {
