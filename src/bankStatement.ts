@@ -35,7 +35,7 @@ const makeOrder = (day: string) => ({
 })
 
 // Syncs the today and the past two days to Actual Budget
-const main = async () => {
+export const bankStatement = async () => {
   const transactions: Transaction[] = []
   for (const day of days) {
     // The bank responds with an error code if the requests are spaced too close to each other
@@ -74,5 +74,3 @@ const main = async () => {
 
   await sendTransactions(transactions)
 }
-
-void main()
