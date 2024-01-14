@@ -9,7 +9,14 @@ export const getNotes = ({
     entryDetails.transactionDetails.remittanceInformation.structured
       .creditorReferenceInformation.ref
 
+  const cleanAdditionalEntryInfo = additionalEntryInfo.replace(
+    'Online-Einkauf ZKB Visa Debit Card Nr. xxxx 0193, ',
+    ''
+  )
+
   return `${
-    customRef ? `${customRef} (${additionalEntryInfo})` : additionalEntryInfo
+    customRef
+      ? `${customRef} (${cleanAdditionalEntryInfo})`
+      : cleanAdditionalEntryInfo
   }`
 }

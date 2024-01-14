@@ -22,7 +22,7 @@ export const camt053ToTransaction =
           account: accountId,
           id: entry.accountServicerReference,
           imported_id: entry.accountServicerReference,
-          date: entry.bookingDate,
+          date: entry.valueDate,
           payee_name: payee,
           imported_payee: payee,
           amount: entry.creditDebitIndicator === 'debit' ? -amount : amount,

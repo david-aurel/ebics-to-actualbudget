@@ -47,7 +47,7 @@ export const Camt053Schema = z
                     // Value Date (when the transaction was initiated)
                     ValDt: fromArray(
                       z.object({
-                        Dt: z.array(z.string()).nonempty().max(1), // YYYY-MM-DD
+                        Dt: fromArray(z.string()), // YYYY-MM-DD
                       })
                     ),
 
