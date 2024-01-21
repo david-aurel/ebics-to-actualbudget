@@ -1,6 +1,5 @@
-// Actual Budget doesn't use EMS yet
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const actualBudget = require('@actual-app/api')
+
+import actualBudget from '@actual-app/api'
 import { Camt053SchemaType } from '../zod/camt053'
 import { Transaction } from '../zod/Transaction'
 import { getPayee } from './getPayee'

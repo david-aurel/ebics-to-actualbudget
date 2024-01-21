@@ -1,6 +1,4 @@
-// Actual Budget API doesn't support ESM yet
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const actualBudget = require('@actual-app/api')
+import actualBudget from '@actual-app/api'
 import { env } from './env'
 import { Transaction } from './zod/Transaction'
 
