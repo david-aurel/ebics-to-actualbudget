@@ -7,5 +7,5 @@ test('The `camt053ToTransaction` function converts camt053 JSON into actual-budg
     camt053ToTransaction('test-account-id')(Camt053Schema.parse(data))
   )
   expect(results).toMatchSnapshot()
-  expect(results.length).toBe(17)
+  expect(results.length).toBe(26)
 })

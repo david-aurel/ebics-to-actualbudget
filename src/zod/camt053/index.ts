@@ -9,6 +9,20 @@ const RelatedPartySchema = z.object({
     z.object({ AdrLine: z.array(z.string()).nullish() }).nullish()
   ).nullish(),
 })
+const AmountSchema = fromArray(
+  z.object({
+    _: z.string(), // amount
+    $: z.object({
+      Ccy: z.string(), // currency
+    }),
+  })
+)
+const CreditDebitIndicatorSchema = fromArray(
+  z.union([
+    z.literal('CRDT').transform(() => 'credit' as const),
+    z.literal('DBIT').transform(() => 'debit' as const),
+  ])
+)
 
 export const Camt053Schema = z
   .object({
@@ -24,22 +38,10 @@ export const Camt053Schema = z
                 .array(
                   z.object({
                     // Amount and currency
-                    Amt: fromArray(
-                      z.object({
-                        _: z.string(), // amount
-                        $: z.object({
-                          Ccy: z.string(), // currency
-                        }),
-                      })
-                    ),
+                    Amt: AmountSchema,
 
                     // Indicator of credit or debit entry
-                    CdtDbtInd: fromArray(
-                      z.union([
-                        z.literal('CRDT').transform(() => 'credit' as const),
-                        z.literal('DBIT').transform(() => 'debit' as const),
-                      ])
-                    ),
+                    CdtDbtInd: CreditDebitIndicatorSchema,
 
                     // Reversal Indicator (true if the entry is a return or refund)
                     RvslInd: fromArray(booleanFromString),
@@ -47,7 +49,7 @@ export const Camt053Schema = z
                     // Value Date (when the transaction was initiated)
                     ValDt: fromArray(
                       z.object({
-                        Dt: z.array(z.string()).nonempty().max(1), // YYYY-MM-DD
+                        Dt: fromArray(z.string()), // YYYY-MM-DD
                       })
                     ),
 
@@ -87,8 +89,22 @@ export const Camt053Schema = z
                     NtryDtls: fromArray(
                       z.object({
                         // Transaction Details
-                        TxDtls: fromArray(
+                        TxDtls: z.array(
                           z.object({
+                            Refs: fromArray(
+                              z.object({
+                                // Account Servicer Reference
+                                // Unique reference for the entry, assigned by the financial institution,
+                                // which is used for duplicate checking
+                                AcctSvcrRef: fromArray(z.string()),
+                              })
+                            ),
+                            // Amount and currency
+                            Amt: AmountSchema,
+
+                            // Indicator of credit or debit entry
+                            CdtDbtInd: CreditDebitIndicatorSchema,
+
                             // Related Parties
                             RltdPties: fromArray(
                               z.object({
@@ -98,6 +114,7 @@ export const Camt053Schema = z
                                 Cdtr: fromArray(RelatedPartySchema).nullish(),
                               })
                             ),
+
                             // Remittance Information
                             RmtInf: fromArray(
                               z
@@ -153,28 +170,33 @@ export const Camt053Schema = z
                 poi: val.CardTx?.POI.Id.Id,
               },
               entryDetails: {
-                transactionDetails: {
-                  relatedParties: {
-                    creditor: {
-                      name: val.NtryDtls?.TxDtls.RltdPties.Cdtr?.Nm,
-                      addressLine:
-                        val.NtryDtls?.TxDtls.RltdPties.Cdtr?.PstlAdr?.AdrLine,
+                transactionDetails:
+                  val.NtryDtls?.TxDtls.map((_) => ({
+                    accountServicerReference: _.Refs.AcctSvcrRef,
+                    amount: {
+                      value: _.Amt._,
+                      currency: _.Amt.$.Ccy,
                     },
-                    debtor: {
-                      name: val.NtryDtls?.TxDtls.RltdPties.Dbtr?.Nm,
-                      addressLine:
-                        val.NtryDtls?.TxDtls.RltdPties.Dbtr?.PstlAdr?.AdrLine,
-                    },
-                  },
-                  remittanceInformation: {
-                    unstructured: val.NtryDtls?.TxDtls.RmtInf?.Ustrd,
-                    structured: {
-                      creditorReferenceInformation: {
-                        ref: val.NtryDtls?.TxDtls.RmtInf?.Strd?.CdtrRefInf?.Ref,
+                    creditDebitIndicator: _.CdtDbtInd,
+                    relatedParties: {
+                      creditor: {
+                        name: _.RltdPties.Cdtr?.Nm,
+                        addressLine: _.RltdPties.Cdtr?.PstlAdr?.AdrLine,
+                      },
+                      debtor: {
+                        name: _.RltdPties.Dbtr?.Nm,
+                        addressLine: _.RltdPties.Dbtr?.PstlAdr?.AdrLine,
                       },
                     },
-                  },
-                },
+                    remittanceInformation: {
+                      unstructured: _.RmtInf?.Ustrd,
+                      structured: {
+                        creditorReferenceInformation: {
+                          ref: _.RmtInf?.Strd?.CdtrRefInf?.Ref,
+                        },
+                      },
+                    },
+                  })) ?? [],
               },
             })),
           },

@@ -44,13 +44,12 @@ export const bankStatement = async () => {
 
     const order = makeOrder(day)
     const response: Response = await Client.send(order)
-    console.log(`Response for ${day}`, response)
 
     if (response.technicalCode !== '000000')
       throw new Error(`Something went wrong for for ${day}`)
 
     if (response.businessCode === '090005') {
-      console.log(`No data for ${day}`)
+      console.log(`0 entries for ${day}`)
       continue
     }
 
@@ -68,9 +67,10 @@ export const bankStatement = async () => {
   }
 
   if (!transactions.length) {
-    console.log(`No data for the past three days of ${days.join(', ')}`)
     return
   }
 
   await sendTransactions(transactions)
 }
+
+void bankStatement()

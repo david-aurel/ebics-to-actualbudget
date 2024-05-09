@@ -4,7 +4,7 @@ import fs from 'fs'
 
 type Response = {
   technicalCode: string
-  bankKeys: Buffer
+  bankKeys: { bankX002: { mod: Buffer }; bankE002: { mod: Buffer } }
 }
 
 const Client = getClient()
@@ -17,9 +17,10 @@ const main = async () => {
   if (response.technicalCode !== '000000')
     throw new Error('Something went wrong for HPB order')
 
-  const data = Buffer.from(response.bankKeys)
+  const data = Buffer.from(response.bankKeys.bankE002.mod)
+
   console.log('Received bank keys: ', data)
-  fs.writeFileSync('../ebics_bank_key.txt', data.toString('utf-8'))
+  fs.writeFileSync('ebics_bank_key.txt', data.toString('utf-8'))
 
   return Client.setBankKeys(response.bankKeys)
 }

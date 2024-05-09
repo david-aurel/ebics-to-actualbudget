@@ -1,4 +1,3 @@
-// Actual Budget doesn't use EMS yet
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const actualBudget = require('@actual-app/api')
 import { Camt053SchemaType } from '../zod/camt053'
@@ -12,23 +11,51 @@ import { getNotes } from './getNotes'
  */
 export const camt053ToTransaction =
   (accountId: string) => (data: Camt053SchemaType) => {
-    const transactions: Transaction[] =
-      data.document.bankToCustomerStatement.statement.entries.map((entry) => {
-        const amount = actualBudget.utils.amountToInteger(entry.amount.value)
-        const payee = getPayee(entry)
-        const notes = getNotes(entry)
-        return {
-          // TODO: find out account id
-          account: accountId,
-          id: entry.accountServicerReference,
-          imported_id: entry.accountServicerReference,
-          date: entry.bookingDate,
-          payee_name: payee,
-          imported_payee: payee,
-          amount: entry.creditDebitIndicator === 'debit' ? -amount : amount,
-          cleared: true, // camt053 only includes cleared transactions
-          notes,
-        }
+    const transactions: Transaction[] = []
+    for (const entry of data.document.bankToCustomerStatement.statement
+      .entries) {
+      //Batch transactions
+      if (entry.entryDetails.transactionDetails.length > 1) {
+        entry.entryDetails.transactionDetails.forEach((batchTransaction, i) => {
+          const payee = getPayee({ ...entry, transactionDetailIndex: i })
+          const notes = getNotes({ ...entry, transactionDetailIndex: i })
+          const amount = actualBudget.utils.amountToInteger(
+            batchTransaction.amount.value
+          )
+          transactions.push({
+            account: accountId,
+            id: batchTransaction.accountServicerReference,
+            imported_id: batchTransaction.accountServicerReference,
+            date: entry.valueDate,
+            payee_name: payee,
+            imported_payee: payee,
+            amount:
+              batchTransaction.creditDebitIndicator === 'debit'
+                ? -amount
+                : amount,
+            cleared: true, // camt053 only includes cleared transactions
+            notes,
+          })
+        })
+        continue
+      }
+
+      // Single transaction
+      const payee = getPayee({ ...entry, transactionDetailIndex: 0 })
+      const notes = getNotes({ ...entry, transactionDetailIndex: 0 })
+      const amount = actualBudget.utils.amountToInteger(entry.amount.value)
+      transactions.push({
+        account: accountId,
+        id: entry.accountServicerReference,
+        imported_id: entry.accountServicerReference,
+        date: entry.valueDate,
+        payee_name: payee,
+        imported_payee: payee,
+        amount: entry.creditDebitIndicator === 'debit' ? -amount : amount,
+        cleared: true, // camt053 only includes cleared transactions
+        notes,
       })
+    }
+
     return transactions
   }

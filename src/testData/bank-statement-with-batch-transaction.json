@@ -1,0 +1,482 @@
+{
+  "Document": {
+    "$": { "xmlns": "urn:iso:std:iso:20022:tech:xsd:camt.053.001.04" },
+    "BkToCstmrStmt": [
+      {
+        "GrpHdr": [
+          {
+            "MsgId": ["E00000002E244711-00001"],
+            "CreDtTm": ["2001-02-02T12:30:00.000+02:00"],
+            "MsgPgntn": [{ "PgNb": ["1"], "LastPgInd": ["true"] }],
+            "AddtlInf": ["SPS/1.7/PROD"]
+          }
+        ],
+        "Stmt": [
+          {
+            "Id": ["xxx"],
+            "ElctrncSeqNb": ["82"],
+            "CreDtTm": ["2001-02-02T00:29:29.532+02:00"],
+            "FrToDt": [
+              {
+                "FrDtTm": ["2001-02-02T00:00:00.000000000+02:00"],
+                "ToDtTm": ["2001-02-02T23:59:59.999999999+02:00"]
+              }
+            ],
+            "Acct": [
+              {
+                "Id": [{ "IBAN": ["xxx"] }],
+                "Ownr": [
+                  {
+                    "Nm": ["Spongebob Squarepants"],
+                    "PstlAdr": [
+                      {
+                        "StrtNm": ["Conch St."],
+                        "BldgNb": ["124"],
+                        "PstCd": [""],
+                        "TwnNm": ["Bikini Bottom"],
+                        "Ctry": ["CH"]
+                      }
+                    ]
+                  }
+                ],
+                "Svcr": [
+                  {
+                    "FinInstnId": [
+                      {
+                        "BICFI": ["xxx"],
+                        "Othr": [{ "Id": ["xxx"], "Issr": ["VAT-ID"] }]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "Bal": [
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["OPBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-02-02"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLBD"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-02-02"] }]
+              },
+              {
+                "Tp": [{ "CdOrPrtry": [{ "Cd": ["CLAV"] }] }],
+                "Amt": [{ "_": "xxx", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "Dt": [{ "Dt": ["2001-02-02"] }]
+              }
+            ],
+            "TxsSummry": [
+              {
+                "TtlNtries": [
+                  {
+                    "NbOfNtries": ["8"],
+                    "TtlNetNtry": [{ "Amt": ["xxxx"], "CdtDbtInd": ["DBIT"] }]
+                  }
+                ],
+                "TtlCdtNtries": [{ "NbOfNtries": ["3"], "Sum": ["xxx"] }],
+                "TtlDbtNtries": [{ "NbOfNtries": ["5"], "Sum": ["xxx"] }]
+              }
+            ],
+            "Ntry": [
+              {
+                "Amt": [{ "_": "43.25", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["L113R111895HKC4B-2"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["RCDT"], "SubFmlyCd": ["AUTT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Gutschrift TWINT: Ut Dolor Dapibus Industries"
+                ]
+              },
+              {
+                "Amt": [{ "_": "167.5", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-02"] }],
+                "AcctSvcrRef": ["L113R111899M5L78-2"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["RCDT"], "SubFmlyCd": ["AUTT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Gutschrift TWINT: Ut Dolor Dapibus Industries"
+                ]
+              },
+              {
+                "Amt": [{ "_": "100", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["CRDT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["L113P111899MFNNS-2"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["RCDT"], "SubFmlyCd": ["AUTT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": ["Gutschrift TWINT: Nunc In Consulting"]
+              },
+              {
+                "Amt": [{ "_": "15", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["L113P111899WMS2X-1"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["ICDT"], "SubFmlyCd": ["AUTT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": ["Belastung TWINT: , Arcu LL"]
+              },
+              {
+                "Amt": [{ "_": "3086.5", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-01-30"] }],
+                "AcctSvcrRef": ["Z241201318625"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["ICDT"], "SubFmlyCd": ["AUTT"] }]
+                      }
+                    ]
+                  }
+                ],
+                "Chrgs": [""],
+                "NtryDtls": [
+                  {
+                    "Btch": [
+                      {
+                        "NbOfTxs": ["2"],
+                        "TtlAmt": [{ "_": "3086.5", "$": { "Ccy": "CHF" } }]
+                      }
+                    ],
+                    "TxDtls": [
+                      {
+                        "Refs": [{ "AcctSvcrRef": ["MO2404264911A8DD"] }],
+                        "Amt": [{ "_": "86.5", "$": { "Ccy": "CHF" } }],
+                        "CdtDbtInd": ["DBIT"],
+                        "BkTxCd": [
+                          {
+                            "Domn": [
+                              {
+                                "Cd": ["PMNT"],
+                                "Fmly": [
+                                  { "Cd": ["ICDT"], "SubFmlyCd": ["DMCT"] }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "RltdPties": [
+                          {
+                            "Dbtr": [
+                              {
+                                "Nm": ["Crusty Crab AG"],
+                                "PstlAdr": [
+                                  {
+                                    "Ctry": ["LI"],
+                                    "AdrLine": [
+                                      "Crusty Crab AG",
+                                      "Bikini Bottom"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "Cdtr": [
+                              {
+                                "Nm": ["Spongebob Squarepants"],
+                                "PstlAdr": [
+                                  {
+                                    "StrtNm": ["Conch St."],
+                                    "BldgNb": ["124"],
+                                    "PstCd": [""],
+                                    "TwnNm": ["Bikini Bottom"],
+                                    "Ctry": ["CH"]
+                                  }
+                                ]
+                              }
+                            ],
+                            "CdtrAcct": [{ "Id": [{ "IBAN": ["xxx"] }] }]
+                          }
+                        ],
+                        "RltdAgts": [
+                          {
+                            "DbtrAgt": [
+                              { "FinInstnId": [{ "BICFI": ["xxx"] }] }
+                            ],
+                            "CdtrAgt": [
+                              {
+                                "FinInstnId": [
+                                  {
+                                    "ClrSysMmbId": [{ "MmbId": ["xxx"] }],
+                                    "PstlAdr": [
+                                      {
+                                        "AdrLine": ["Bank", "Postfach", "9999"]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "RmtInf": [
+                          {
+                            "Strd": [
+                              {
+                                "CdtrRefInf": [
+                                  {
+                                    "Tp": [
+                                      { "CdOrPrtry": [{ "Prtry": ["QRR"] }] }
+                                    ],
+                                    "Ref": ["000000161897617040000275204"]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "Refs": [{ "AcctSvcrRef": ["MO2404284914D1B9"] }],
+                        "Amt": [{ "_": "3000", "$": { "Ccy": "CHF" } }],
+                        "CdtDbtInd": ["DBIT"],
+                        "BkTxCd": [
+                          {
+                            "Domn": [
+                              {
+                                "Cd": ["PMNT"],
+                                "Fmly": [
+                                  { "Cd": ["ICDT"], "SubFmlyCd": ["DMCT"] }
+                                ]
+                              }
+                            ]
+                          }
+                        ],
+                        "RltdPties": [
+                          {
+                            "Dbtr": [
+                              {
+                                "Nm": ["Spongebob Squarepants"],
+                                "PstlAdr": [
+                                  {
+                                    "AdrLine": [
+                                      "Spongebob Squarepants",
+                                      "Conch St. 124",
+                                      "Bikini Bottom",
+                                      "CH"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ],
+                            "Cdtr": [
+                              {
+                                "Nm": ["Spongebob Squarepants"],
+                                "PstlAdr": [{ "Ctry": ["CH"] }]
+                              }
+                            ],
+                            "CdtrAcct": [{ "Id": [{ "IBAN": ["xxx"] }] }]
+                          }
+                        ],
+                        "RltdAgts": [
+                          {
+                            "DbtrAgt": [
+                              { "FinInstnId": [{ "BICFI": ["xxx"] }] }
+                            ],
+                            "CdtrAgt": [
+                              {
+                                "FinInstnId": [
+                                  {
+                                    "ClrSysMmbId": [{ "MmbId": ["xxx"] }],
+                                    "PstlAdr": [
+                                      {
+                                        "AdrLine": ["Bank", "Postfach", "9999"]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Belastungen eBanking Mobile (2): Auftrags-Nr. xxx"
+                ]
+              },
+              {
+                "Amt": [{ "_": "0.59", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["L115B11189B342GP"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["CCRD"], "SubFmlyCd": ["POSD"] }]
+                      }
+                    ]
+                  }
+                ],
+                "CardTx": [
+                  {
+                    "Card": [
+                      {
+                        "PlainCardData": [
+                          {
+                            "PAN": ["xxx"],
+                            "CardSeqNb": ["xxx"],
+                            "XpryDt": ["xxx"]
+                          }
+                        ],
+                        "CardBrnd": [{ "Id": ["50"] }]
+                      }
+                    ],
+                    "POI": [
+                      { "Id": [{ "Id": ["EasyPark GmbH 00000 easypark.de"] }] }
+                    ]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Online-Einkauf aus Abonnement ZKB Visa Debit Card Nr. xxxx, EasyPark GmbH 00000"
+                ]
+              },
+              {
+                "Amt": [{ "_": "51.45", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["L115B11189B38KX5"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["CCRD"], "SubFmlyCd": ["POSD"] }]
+                      }
+                    ]
+                  }
+                ],
+                "CardTx": [
+                  {
+                    "Card": [
+                      {
+                        "PlainCardData": [
+                          {
+                            "PAN": ["xxx"],
+                            "CardSeqNb": ["xxx"],
+                            "XpryDt": ["xxx"]
+                          }
+                        ],
+                        "CardBrnd": [{ "Id": ["50"] }]
+                      }
+                    ],
+                    "POI": [{ "Id": [{ "Id": ["Migros M"] }] }]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Online-Einkauf ZKB Visa Debit Card Nr. xxxx, Migros"
+                ]
+              },
+              {
+                "Amt": [{ "_": "5.6", "$": { "Ccy": "CHF" } }],
+                "CdtDbtInd": ["DBIT"],
+                "RvslInd": ["false"],
+                "Sts": ["BOOK"],
+                "BookgDt": [{ "Dt": ["2001-02-02"] }],
+                "ValDt": [{ "Dt": ["2001-02-01"] }],
+                "AcctSvcrRef": ["L115B11189B4Q78V"],
+                "BkTxCd": [
+                  {
+                    "Domn": [
+                      {
+                        "Cd": ["PMNT"],
+                        "Fmly": [{ "Cd": ["CCRD"], "SubFmlyCd": ["POSD"] }]
+                      }
+                    ]
+                  }
+                ],
+                "CardTx": [
+                  {
+                    "Card": [
+                      {
+                        "PlainCardData": [
+                          {
+                            "PAN": ["xxx"],
+                            "CardSeqNb": ["xxx"],
+                            "XpryDt": ["xxx"]
+                          }
+                        ],
+                        "CardBrnd": [{ "Id": ["50"] }]
+                      }
+                    ],
+                    "POI": [{ "Id": [{ "Id": ["Migros M"] }] }]
+                  }
+                ],
+                "AddtlNtryInf": [
+                  "Online-Einkauf ZKB Visa Debit Card Nr. xxxx, Migros M"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

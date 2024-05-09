@@ -29,3 +29,4 @@ downloads/*
 # sensitive information
 .env
 ebics_private_key.txt
+ebics_bank_key.txt
