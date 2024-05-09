@@ -1,4 +1,5 @@
-import actualBudget from '@actual-app/api'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const actualBudget = require('@actual-app/api')
 import { env } from './env'
 import { Transaction } from './zod/Transaction'
 
