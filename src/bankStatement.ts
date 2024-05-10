@@ -64,6 +64,7 @@ export const bankStatement = async () => {
     )(camt053Data)
 
     transactions.push(...transactionsFromData)
+    console.log(`${transactionsFromData.length} entries for ${day}`)
   }
 
   if (!transactions.length) {

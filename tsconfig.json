@@ -1,11 +1,11 @@
 {
   "compilerOptions": {    
     /* Language and Environment */
-    "target": "ES2016",                                    /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */   
+    "target": "ES2022",                                    /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */   
     
     /* Modules */
-    "module": "esnext",                                  /* Specify what module code is generated. */
-    "moduleResolution": "node",
+    "module": "ES2022",                                    /* Specify what module code is generated. */
+    "moduleResolution": "node", 
     "resolveJsonModule": true,
 
     /* Emit */
@@ -38,13 +38,5 @@
     "skipLibCheck": false,                                 /* Skip type checking all .d.ts files. */
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"],  
-
-  // these options are overrides used only by ts-node
-  "ts-node": {
-    // same as the --compilerOptions flag and the TS_NODE_COMPILER_OPTIONS environment variable
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  },
+  "exclude": ["node_modules"],    
 }
