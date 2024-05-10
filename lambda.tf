@@ -24,6 +24,12 @@ resource "aws_lambda_function" "ebics-to-actualbudget" {
   source_code_hash = filemd5("${path.module}/build/lambda.zip")
 
   role = aws_iam_role.lambda_exec.arn
+
+  environment {
+    variables = {
+      NODE_OPTIONS = "enable-source-maps"
+    }
+  }
 }
 
 resource "aws_cloudwatch_log_group" "ebics-to-actualbudget" {
