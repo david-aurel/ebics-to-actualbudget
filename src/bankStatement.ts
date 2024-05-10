@@ -7,12 +7,7 @@ import { env } from './env'
 import { sendTransactions } from './actualBudget'
 import { sub, format } from 'date-fns'
 import { Transaction } from './zod/Transaction'
-
-type Response = {
-  technicalCode: string
-  businessCode: string
-  orderData: Buffer
-}
+import { ResponseSchema } from './zod/Response'
 
 const Client = getClient()
 
@@ -43,14 +38,19 @@ export const bankStatement = async () => {
       await new Promise((resolve) => setTimeout(resolve, 500))
 
     const order = makeOrder(day)
-    const response: Response = await Client.send(order)
+    const responseRaw = await Client.send(order)
+    const response = ResponseSchema.parse(responseRaw)
 
-    if (response.technicalCode !== '000000')
-      throw new Error(`Something went wrong for for ${day}`)
+    if ('technicalCode' in response && response.technicalCode !== '000000')
+      throw new Error(`Something went wrong for for ${day}: ${response}`)
 
-    if (response.businessCode === '090005') {
+    if ('businessCode' in response && response.businessCode === '090005') {
       console.log(`0 entries for ${day}`)
       continue
+    }
+
+    if (!('orderData' in response)) {
+      throw new Error(`Something went wrong for for ${day}: ${response}`)
     }
 
     const zip = new AdmZip(response.orderData)
