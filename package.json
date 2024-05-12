@@ -37,7 +37,7 @@
     "big.js": "^6.2.1",
     "date-fns": "^3.1.0",
     "dotenv": "^16.3.1",
-    "ebics-client": "^0.3.0",
+    "ebics-client": "^4.1.0",
     "envalid": "^8.0.0",
     "xml2js": "^0.6.2",
     "zod": "^3.22.4"
