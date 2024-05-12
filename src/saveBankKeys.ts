@@ -7,11 +7,10 @@ type Response = {
   bankKeys: { bankX002: { mod: Buffer }; bankE002: { mod: Buffer } }
 }
 
-const Client = getClient()
-
 // Client keys must be already generated and send by letter.
 // The bank should have enabled the user.
 const main = async () => {
+  const Client = await getClient()
   const response: Response = await Client.send(Orders.HPB)
 
   if (response.technicalCode !== '000000')

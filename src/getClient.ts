@@ -1,8 +1,9 @@
 import { Client, fsKeysStorage } from 'ebics-client'
-import { env } from './env'
+import { getEnv } from './env'
 
-export const getClient = () =>
-  new Client({
+export const getClient = async () => {
+  const env = await getEnv()
+  return new Client({
     url: env.EBICS_CLIENT_URL,
     partnerId: env.EBICS_CLIENT_PARTNER_ID,
     userId: env.EBICS_CLIENT_USER_ID,
@@ -13,3 +14,4 @@ export const getClient = () =>
     bankShortName: env.EBICS_CLIENT_BANK_SHORT_NAME,
     languageCode: env.EBICS_CLIENT_LANGUAGE_CODE,
   })
+}

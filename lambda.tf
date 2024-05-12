@@ -28,6 +28,7 @@ resource "aws_lambda_function" "ebics-to-actualbudget" {
   environment {
     variables = {
       NODE_OPTIONS = "enable-source-maps"
+      NODE_ENV     = "production"
     }
   }
 }

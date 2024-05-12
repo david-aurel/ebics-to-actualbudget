@@ -5,9 +5,8 @@ type Response = {
   technicalCode: string
 }
 
-const Client = getClient()
-
 const main = async () => {
+  const Client = await getClient()
   const INIResponse: Response = await Client.send(Orders.INI)
   console.log(`Response for INI order: `, INIResponse)
   if (INIResponse.technicalCode !== '000000')
