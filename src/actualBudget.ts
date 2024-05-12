@@ -1,9 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const actualBudget = require('@actual-app/api')
-import { env } from './env'
+import { getEnv } from './env'
 import { Transaction } from './zod/Transaction'
 
 const withActualBudget = async (callback: () => Promise<void>) => {
+  const env = await getEnv()
   await actualBudget.init({
     dataDir: './downloads',
     serverURL: env.ACTUAL_BUDGET_SERVER_URL,
@@ -19,6 +20,7 @@ const withActualBudget = async (callback: () => Promise<void>) => {
 
 export const sendTransactions = (transactions: Transaction[]) =>
   withActualBudget(async () => {
+    const env = await getEnv()
     await actualBudget.importTransactions(
       env.ACTUAL_BUDGET_ACCOUNT_ID,
       transactions

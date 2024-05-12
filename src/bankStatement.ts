@@ -3,13 +3,11 @@ import AdmZip from 'adm-zip'
 import { parseStringPromise } from 'xml2js'
 import { Camt053Schema } from './zod/camt053'
 import { camt053ToTransaction } from './camt053ToTransaction'
-import { env } from './env'
+import { getEnv } from './env'
 import { sendTransactions } from './actualBudget'
 import { sub, format } from 'date-fns'
 import { Transaction } from './zod/Transaction'
 import { ResponseSchema } from './zod/Response'
-
-const Client = getClient()
 
 const today = new Date()
 const days = [
@@ -31,6 +29,8 @@ const makeOrder = (day: string) => ({
 
 // Syncs the today and the past two days to Actual Budget
 export const bankStatement = async () => {
+  const env = await getEnv()
+  const Client = await getClient()
   const transactions: Transaction[] = []
   for (const day of days) {
     // The bank responds with an error code if the requests are spaced too close to each other
