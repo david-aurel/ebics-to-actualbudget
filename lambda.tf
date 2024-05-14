@@ -62,5 +62,5 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_execution" {
 }
 resource "aws_iam_role_policy_attachment" "lambda_policy_ssm" {
   role       = aws_iam_role.lambda_exec.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonSSMReadOnlyAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
 }
